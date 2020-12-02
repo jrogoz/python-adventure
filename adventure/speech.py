@@ -7,10 +7,13 @@ Apache License, Version 2.0 as detailed in the accompanying README.txt.
 
 import speech_recognition as sr
 import pyttsx3
+import numpy as np
 import pyaudio
 # import engineio
 
 def synthesis(text):
+
+    text = text.replace("\n", " ")
 
     engineio = pyttsx3.init()
 
@@ -38,3 +41,4 @@ def recognition():
             print("repeat please".upper())
             synthesis("repeat please")
             return ''
+
