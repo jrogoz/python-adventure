@@ -5,6 +5,7 @@ Apache License, Version 2.0 as detailed in the accompanying README.txt.
 
 """
 import sys
+from .speech import synthesis
 
 if sys.version_info <= (3,):
     raise RuntimeError('Alas, Adventure requires Python 3 or later')
@@ -34,6 +35,7 @@ def play(seed=None):
     install_words(_game)
     _game.start()
     print(_game.output[:-1])
+    synthesis(_game.output[:-1])
 
 def resume(savefile, quiet=False):
     global _game
@@ -45,3 +47,4 @@ def resume(savefile, quiet=False):
     install_words(_game)
     if not quiet:
         print('GAME RESTORED\n')
+        synthesis('game restored')

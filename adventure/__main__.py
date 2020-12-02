@@ -10,8 +10,9 @@ import re
 import readline
 import sys
 from time import sleep
-from . import load_advent_dat
-from .game import Game
+from adventure import load_advent_dat
+from adventure.game import Game
+from adventure.speech import synthesis, recognition
 
 BAUD = 1200
 
@@ -21,6 +22,7 @@ def baudout(s):
         sleep(9. / BAUD)  # 8 bits + 1 stop bit @ the given baud rate
         out.write(c)
         out.flush()
+    synthesis(s.lower())
 
 def loop(args):
     parser = argparse.ArgumentParser(
@@ -35,15 +37,23 @@ def loop(args):
         load_advent_dat(game)
         game.start()
         baudout(game.output)
+
+
     else:
         game = Game.resume(args.savefile)
         baudout('GAME RESTORED\n')
 
     while not game.is_finished:
-        line = input('> ').lower()
+        # line = input('> ').lower()
+        # words = re.findall(r'\w+', line)
+        line = recognition()
+        if line is not None:
+            line = line.lower()
+        print(line)
         words = re.findall(r'\w+', line)
         if words:
             baudout(game.do_command(words))
+
 
 if __name__ == '__main__':
     try:
