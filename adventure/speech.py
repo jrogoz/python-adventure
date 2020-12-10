@@ -13,7 +13,7 @@ import pyaudio
 
 def synthesis(text):
 
-    text = text.replace("\n", " ") 
+    text = text.replace("\n", " ")
 
     engineio = pyttsx3.init()
 
