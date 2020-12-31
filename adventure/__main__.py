@@ -46,11 +46,18 @@ def loop(args):
     while not game.is_finished:
         # line = input('> ').lower()
         # words = re.findall(r'\w+', line)
-        line = recognition()
-        if line is not None:
-            line = line.lower()
-        print(line)
-        words = re.findall(r'\w+', line)
+        words = recognition()
+        print(words)
+        print(len(words))
+        i = 0
+        for item in words:
+            words[i] = item.lower()
+            i+=1
+        # print(line)
+        # for i in len(line):
+        #     line[i] = line[i].lower()`
+        # print(line)
+        # words = re.findall(r'\w+', line)
         if words:
             baudout(game.do_command(words))
 
