@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="372b60c6-3fdb-47e4-9e98-7596eb9b06cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adventure/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/adventure/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adventure/speech.py" beforeDir="false" afterPath="$PROJECT_DIR$/adventure/speech.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
