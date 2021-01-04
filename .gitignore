@@ -10,3 +10,4 @@ dist/
 .idea/
 .idea/workspace.xml
 adventure/inlaid-fire-300213-a4809b4c6569.json
+adventure/test.py

@@ -21,7 +21,8 @@ def load_commands(filename):
 
     for i in range(len(data)):
         map[i] = (data[i], 1.0)
-    return map
+    data.sort()
+    return data
 
 def synthesis(text):
 
@@ -44,7 +45,7 @@ def recognition():
     import json
     with open('inlaid-fire-300213-a4809b4c6569.json', 'r') as j:
         json_data = json.load(j)
-        print(json_data)
+        # print(json_data)
 
     json_s = json.dumps(json_data)
 
@@ -56,23 +57,11 @@ def recognition():
         audio = r.listen(source)
 
         try:
-            keywords = load_commands('commands.txt')
-            text = r.recognize_sphinx(audio, keyword_entries=keywords)
-            #text = r.recognize_sphinx(audio, grammar='counting.gram',keyword_entries=[("south", 1.0), ("north", 1.0), ("east", 1.0),("explore", 1.0)])
-            text = text.split("  ")
-            return text#[::-1]
+            text = r.recognize_google_cloud(audio, language="en-GB", credentials_json=json_s, preferred_phrases=["south", "north", "gully"])
+            return text
         except sr.UnknownValueError:
             print("repeat please".upper())
             synthesis("repeat please")
             return ''
         except sr.RequestError as e:
-            print("Could not request results from Google Speech Recognition service; {0}".format(e))
-
-
-        #GC API
-        # try:
-        #     print("Google Cloud Speech thinks you said " + r.recognize_google_cloud(audio, credentials_json=json_s))
-        # except sr.UnknownValueError:
-        #     print("Google Cloud Speech could not understand audio")
-        # except sr.RequestError as e:
-        #     print("Could not request results from Google Cloud Speech service; {0}".format(e))
+            print("Could not request results from Google Cloud Speech service; \n {0}".format(e))

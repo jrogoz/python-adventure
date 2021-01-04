@@ -44,20 +44,10 @@ def loop(args):
         baudout('GAME RESTORED\n')
 
     while not game.is_finished:
-        # line = input('> ').lower()
-        # words = re.findall(r'\w+', line)
         words = recognition()
+        words = words.lower()
         print(words)
-        print(len(words))
-        i = 0
-        for item in words:
-            words[i] = item.lower()
-            i+=1
-        # print(line)
-        # for i in len(line):
-        #     line[i] = line[i].lower()`
-        # print(line)
-        # words = re.findall(r'\w+', line)
+        words = re.findall(r'\w+', words)
         if words:
             baudout(game.do_command(words))
 
