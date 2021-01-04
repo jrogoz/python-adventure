@@ -22,7 +22,6 @@ stream
 rock
 bed
 crawl
-cobbl
 inward
 inside
 in
@@ -40,12 +39,12 @@ view
 upward
 up
 above
-ascen
+ascend
 downward
 down
-desce
+descend
 pit
-outdo
+outdoor
 crack
 steps
 dome
